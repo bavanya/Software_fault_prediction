@@ -1,0 +1,189 @@
+\chapter{Results}\label{final}
+
+\section{Anomaly detection}
+
+Using Isolation Forest we have performed anomaly detection to detect the faulty datapoints in the datasets. The 2D and 3D visualizations from t-SNE are as follows:
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/2d_tsne.png}}%
+  \caption{2D visualization}
+  \label{fig:key}
+\end{figure}
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/3d_tsne.png}}%
+  \caption{3D visualization}
+  \label{fig:key}
+\end{figure}
+
+From the visualizations, it became clear that extensive feature reduction would not help in detecting the faulty datapoints. So, we proceeded without any feature selection. 
+The datasets taken were initially labelled, so we found out the percentage of the faulty datapoints which came out to be 4.71 \% and plotted the distribution of the labels before removing the labels. The plot obtained is: 
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/defect_distribution.png}}%
+  \caption{Distribution of labels}
+  \label{fig:key}
+\end{figure}
+
+After applying the Isolation Forest model, we have obtained the Accuracy of the model by obtaining true positive, true negative and all samples count in the predictions. The formula for accuracy used is:
+
+\[\frac{True Positive + True Negative}{All Samples}\] 
+
+\section{Deep Learning Regression}
+We performed 32 experiments without any feature selection and with three different feature selection techniques:
+ \begin{itemize}
+     \item Singular value Decomposition with 10 and 15 components
+     \item Principal component analysis with 10 and 15 components
+     \item Information Gain
+ \end{itemize}
+and each of SVD and PCA with two different number of components: 10 and 15.
+Min Max scaling preprocessing was performed on the datasets before running all the models. The predictions obtained by all the models were rounded off to nearest integers. We used MSE as the loss function for all the models
+We have developed 9 different models and tried 3 different architectures of LSTM, 3 different architectures of RNN and single architecture each of GRU, ANN and CNN.
+
+\subsection{ANN}
+The schematics of the ANN model designed is visualized as follows:
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/nn.png}}%
+  \caption{ANN Architecture}
+  \label{fig:key}
+\end{figure}
+ 
+ The performance results are as follows:
+ 
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/model3_table.png}}%
+  \caption{ANN Model results}
+  \label{fig:key}
+\end{figure}
+ 
+Observing the results, we can see that the FPA and CLC is obtained to be NAN for two of the experiments. This situation is encountered when all the predictions i.e the number of bugs in the testing data come out to be zero after rounding off. This is an unwanted result. We also see that the best FPA and CLC are obtained when no feature selection technique is applied.
+
+\subsection{GRU}
+The schematics of the GRU model designed is visualized as follows:
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/gru_summary.png}}%
+  \caption{GRU Architecture}
+  \label{fig:key}
+\end{figure}
+
+Oversampling and SMOTE were applied to all the experiments involving the GRU model also. The performance results are as follows:
+ 
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/model5_table.png}}%
+  \caption{GRU Model results}
+  \label{fig:key}
+\end{figure}
+ 
+Observing the results, we see that the best FPA and CLC are obtained when PCA is applied and 10 components were taken for training the model and the least FPA and CLC are obtained when SVD is applied and 15 components were taken for training the model.
+
+\subsection{CNN}
+The schematics of the CNN model designed is visualized as follows:
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/cnn_summary.png}}%
+  \caption{CNN Architecture}
+  \label{fig:key}
+\end{figure}
+
+6 Experiments were conducted taking CNN model and we ran one of the experiments without applying any obersampling and smote with PCA taking 10 components. Rest of the 5 experiments were applying on oversampled and SMOTE balanced data with different feature selection techniques. The performance results are as follows:
+ 
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/model2_table.png}}%
+  \caption{CNN Model results}
+  \label{fig:key}
+\end{figure}
+ 
+Observing the results, we obtained undesired NAN values for FPA and CLC when we applied SVD and obtained 15 components. The best results were obtained when we ran the model with oversampled and SMOTE balanced data after applying PCA and obtaining 10 components. 
+
+\subsection{LSTM}
+
+Three different architectures were tried and they are as follows:
+ \begin{itemize}
+     \item Architecture 1: Three LSTM layers with decreasing output features and single dense layer at the end.
+     \item Architecture 2: Five LSTM layers with decreasing output features and single dense layer at the end.
+     \item Architecture 3: Seven LSTM layers with decreasing output features and single dense layer at the end.
+ \end{itemize}
+ 
+ The summaries of the three LSTM architectures tried as as follows:
+ 
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/LSTM_summary1.png}}%
+  \caption{LSTM Architecture 1}
+  \label{fig:key}
+\end{figure}
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/LSTM_summary2.png}}%
+  \caption{LSTM Architecture 2}
+  \label{fig:key}
+\end{figure}
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/LSTM_summary3.png}}%
+  \caption{LSTM Architecture 3}
+  \label{fig:key}
+\end{figure}
+ 
+Oversampling and SMOTE were applied to all the experiments involving the three LSTM models also. Info gain was taken as a feature selection criteria in one of the experiments. Considering the info gain, 9 features were selected. They are: CBO, RFC, Ce, LCOM3, LOC, DAM, MOA, MFA and CAM. The explanation of the following features are given in chapter 2.
+
+The performance results are as follows:
+
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/lstm_table.png}}%
+  \caption{LSTM Models results}
+  \label{fig:key}
+\end{figure}
+
+From the table, we can observe that the best result was obtained from the LSTM model with architecture 2 when PCA was applied on the data and 15 components were obtained. The second best result was obtained from the architecture 1 of the LSTM models when PCA was obtained and 15 components were taken.
+
+\subsection{RNN}
+
+Three different architectures were tried and they are as follows:
+ \begin{itemize}
+     \item Architecture 1: Three RNN layers with decreasing output features and single dense layer at the end.
+     \item Architecture 2: Five RNN layers with decreasing output features and single dense layer at the end.
+     \item Architecture 3: Three RNN layers with decreasing output features and single dense layer at the end. This architecture is slightly less complex than the 1st RNN architecture.
+ \end{itemize}
+ 
+ The summaries of the three RNN architectures tried as as follows:
+ 
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/rnn_summary1.png}}%
+  \caption{RNN Architecture 1}
+  \label{fig:key}
+\end{figure}
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/rnn_summary2.png}}%
+  \caption{RNN Architecture 2}
+  \label{fig:key}
+\end{figure}
+
+\begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/rnn_summary3.png}}%
+  \caption{RNN Architecture 3}
+  \label{fig:key}
+\end{figure}
+ 
+8 experiments were performed on the RNN models of which in one experiment, we have not oversampled and SMOTE balanced the data. 
+
+The performance results are as follows:
+
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/rnn_table.png}}%
+  \caption{RNN Models results}
+  \label{fig:key}
+\end{figure}
+
+From the table, we can observe that the best result was obtained when SVD was applied on oversampled and SMOTE balanced data and 10 components were selected. 
+
+The training curve of the best performing model among the 32 experiments is plotted using tensorboard and it is visualized as follows:
+
+ \begin{figure}
+\makebox[\textwidth][c]{\includegraphics[width=0.8\textwidth]{others/epoch_loss.png}}%
+  \caption{Training curve}
+  \label{fig:key}
+\end{figure}
+

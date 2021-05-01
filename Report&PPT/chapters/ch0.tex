@@ -1,0 +1,37 @@
+\chapter{Introduction}\label{chap1}
+\section{Software}
+Software is a set of instructions, data, or programs used to operate a computer and execute specific tasks.Software tells a computer how to function.Without software, most computers would be useless. For example, a web browser is a software application that allows users to access the internet. . An operating system (OS) is also  a software program that serves as the interface between other applications and the hardware on a computer or mobile device.So software are very important in this modern world of computers.
+
+\section{Software Fault Detection }
+Effective detection of software faults is an important activity of software development process. Defect detection is an important activity during software development process.For a software development  project ,it is  highly desirable to reduce software defects.The main goal of building program patterns is to find software defects.\cite{software}
+
+The main difficulty of detecting software fault is finding faults in a large and complex software system. 
+
+\section{Unsupervised Anomaly Detection}
+Anomaly detection is the method of identifying data points in the dataset which are unexpected compared to the rest of the data points.
+
+  In case the dataset available for software fault prediction of a project is unlabelled, the fault detection problem can be handled as an Anomaly detection problem where all the faulty data points will be treated as anomalies. This approach is based on the assumption that the percentage of faulty data points is very less in the entire dataset that they can be considered as anomalies.
+  
+\section{Cross Version Fault Prediction}
+  Metrics are extracted from a software project's specific version's source code and immediate next version's source code. Now specific version's data collected are collectively taken as the training data for training the model and the immediate next version's data collected as the collective testing data.
+
+\section{Project Overview}
+Initially we have explored Software fault detection of an unlabelled dataset as an Anomaly detection problem and later we have build different deep learning architectures for predicting faulty data points in the software fault prediction dataset.
+
+\subsection{Different Techniques Used: }
+\begin{itemize}
+  \item Isolation Forest
+  \item Artificial Neural Network
+  \item Convolution Neural Network
+  \item Recurrent Neural Network
+  \item Long Short Term Memory 
+  \item Gated Recurrent Unit
+\end{itemize}
+
+\subsection{Goal of Software Fault Prediction}
+\begin{itemize}
+  \item The main goal of software fault prediction is to use the underlying properties of the source code of a software project to predict faults before the actual testing process begins. This will help in prioritizing the work in the testing process.
+\end{itemize}
+
+\section{Organisation of the Report}\label{sec1.3}
+The chapter 2 of the report explains the dataset features and the work done. Chapter 3 discusses the preprocessing, oversampling, postprocessing methods and  evaluation metrics used in detail with their working explained. In chapter 4, we give clear explanation of the models and architectures experimented for the project. In chapter 5, we display the results and the plots of the training curves to visualize the performance of the models for software fault prediction and analyse and compare the results. In chapter 6, we finally conclude and discuss the future directions of this project.

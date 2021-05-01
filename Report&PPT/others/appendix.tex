@@ -1,0 +1,127 @@
+\chapter*{Appendix}
+\label{appendix}
+
+
+\noindent{\large \textbf{1}\hspace{.4cm}\textbf{Payload}}
+
+\noindent Payload is the actual number of watermark bits that are embedded in a video sequence. 
+
+\noindent$-$ \textit{Average payload} is the actual number of watermark bits that are embedded per frame in a video sequence. \\
+
+%\section{Payload}
+%\label{sec:payload}
+%Payload is the actual number of watermark bits that are embedded in a video sequence. 
+%
+%\noindent$-$ \textit{Average Payload} is the actual number of watermark bits that are embedded per frame in a video sequence. 
+
+\noindent{\large \textbf{2}\hspace{.4cm}\textbf{Peak Signal to Noise Ratio (PSNR)}}
+
+
+\noindent Peak signal-to-noise ratio, often abbreviated as PSNR, is the ratio between the maximum possible power of a signal and the power of corrupting noise that affects the fidelity of its representation~\cite{psnr}. As many signals have a very wide dynamic range, PSNR is usually expressed in terms of the logarithmic decibel scale.
+It is most easily defined via the mean squared error (MSE) which for two $M \times N$ monochrome images $I$ and $K$ where one of the images is considered a noisy approximation of the other is defined as
+\begin{equation}
+\text{MSE} = \frac{1}{MN}\sum_{i=0}^{M-1}\sum_{j=0}^{N-1}\left\|I(i,j) - K(i,j)\right\|^2.\nonumber
+\end{equation}
+The PSNR is defined as
+\begin{equation}
+\text{PSNR} = 10. \log_{10}\frac{(I_{max})^2}{\text{MSE}} dB,\nonumber
+\end{equation}
+\textit{i.e.},
+\begin{equation}
+\text{PSNR} = 20. \log_{10}\frac{I_{max}}{\sqrt{\text{MSE}}} dB,\nonumber
+\end{equation}
+where $I_{max}$ is the maximum possible pixel value of the image $I$. 
+For a 8 bit gray scale image since maximum gray value is 255, PSNR is defined as
+\begin{equation}
+\text{PSNR} = 20. \log_{10}\frac{255}{\sqrt{\text{MSE}}} dB.\nonumber
+\end{equation}
+
+\noindent$-$ \textit{Average PSNR} is the average of PSNR over different payloads for a fixed number of frames in a video.\\
+
+\noindent{\large \textbf{3}\hspace{.4cm}\textbf{Video Quality Metric (VQM)}}
+
+\noindent Video quality metric (VQM) is used to provide an objective measurement for perceived video quality~\cite{vqm}. It measures the perceptual effects of video impairments including blurring, noisy motion, global noise, block distortion, and color distortion and combines them into a single metric. This metric is between zero and one; zero means not having any distortion while one shows maximum impairment. Original compressed and watermarked sequences are used as original and processed clips, respectively.
+
+\noindent$-$ \textit{Average VQM} is the average VQM over different payloads  for a fixed number of frames in a video.\\
+
+
+\noindent{\large \textbf{4}\hspace{.4cm}\textbf{Embedding Capacity}}
+
+\noindent Embedding capacity is the maximum number of watermark bits that can be embedded in a video sequence. 
+
+\noindent$-$ \textit{Average embedding capacity} is the maximum number of watermark bits that can be embedded per frame in a video. \\
+
+\noindent{\large \textbf{5}\hspace{.4cm}\textbf{Bit Increase Rate (BIR)}}
+
+\noindent Bit increase rate (BIR) is defined as the percentage of bit rate increase per embedded bit \cite{masouri2010}.
+\begin{equation}
+\text{BIR} = \frac{|BR_{WM}-BR_{ORG}|}{\text{Payload} \times BR_{ORG}}  \times 100, \nonumber
+\label{chap2_bir}
+\end{equation}
+where $BR_{WM}$ and $BR_{ORG}$ are the number of bits in watermarked and original video sequences, respectively.
+
+\noindent$-$ \textit{Average BIR} is the average of BIR over different payloads  for a fixed number of frames in a video.\\
+
+\noindent{\large \textbf{6}\hspace{.4cm}\textbf{Bit Error Rate (BER) and Robustness}} 
+
+\noindent Bit error rate (BER) is defined as the frequency of bit errors when detecting a multi-bit watermark message~\cite{ber}, \textit{i.e.},
+\begin{equation}
+\text{BER} = \frac{\text{number of error bits}}{\text{total number of bits sent}}.\nonumber
+\label{chap2_ber}
+\end{equation}
+
+\noindent Robustness of a watermarking method~\cite{jana2006} is given by \vspace{-.2cm}
+\begin{equation}
+\text{Robustness} = \text{(1-BER)} \times \text{100}. \nonumber
+\end{equation}
+
+\noindent$-$ \textit{Average robustness} is the robustness averaged over different payloads for a video sequence with fixed number of frames of a video.\\
+
+\noindent{\large \textbf{7}\hspace{.4cm}\textbf{Error Correcting Code\rq{}s Capability}}
+
+\noindent An error-correcting code (ECC) is a system of adding redundant data, or parity data to a message or repetition code, such that it can be recovered by a receiver even when a number of errors  were introduced either during the process of transmission or on storage~\cite{ECC2004}. Error correcting code\rq{}s capability is the capability of a code being used to recover a number of errors introduced either during the process of transmission or on storage.
+
+\noindent{\large \textbf{7}\hspace{.4cm}\textbf{Erasure Channel}}
+
+\noindent Erasure channel in information theory and telecommunications is defined as a communication channel model wherein errors are described as erasures~\cite{erasure}. In this model, a transmitter sends a bit (a zero or a one), and the receiver either receives the bit or it receives a message that the bit was not received ("erased"). This channel is used frequently in information theory because it is one of the simplest channels to analyze. A erasure channel with erasure probability p is a channel with binary input, ternary output, and probability of erasure p. That is, let $X$ be the transmitted random variable with alphabet $\{0, 1\}$. Let $Y$ be the received variable with alphabet $\{0, 1, e\}$, where e is the erasure symbol. Then, the erasure channel with capacity $1 - p$ is characterized by the conditional probabilities:
+\vspace{-.2cm}
+\begin{equation}
+\begin{matrix}
+Pr(Y=0|X=0)&=1-p\\
+Pr(Y=e|X=0)&=p\\
+Pr(Y=1|X=0)&=0\\
+Pr(Y=0|X=1)&=0\\
+Pr(Y=e|X=1)&=p\\
+Pr(Y=1|X=1)&=1-p.\\ 
+\end{matrix}\nonumber
+\end{equation}
+\noindent{\large \textbf{8}\hspace{.4cm}\textbf{Repeat-Accumulate (RA) Codes}}
+
+\noindent Repeat-Accumulate (RA) Codes  \cite{racode} are a low complexity class of error-correcting codes. They were devised so that their ensemble weight distributions are easy to derive. In an RA code, an information block of length $N$ is repeated $q$ times, scrambled by an interleaver of size $qN$, and then encoded by a rate 1 accumulator. It as a block code whose input block $\{z_1, \ldots , z_n\}$ and output block $\{x_1, \ldots , x_n\}$ are related by the following formula:
+\begin{equation}
+x_1 = z_1 \ \  \text{and} \ \ x_i = x_{i-1}+z_i\ \  \text{for} \ \ i > 1. \nonumber \nonumber
+\end{equation}
+The encoding time for RA codes is linear and their rate is $1/q$. They are non systematic.
+~\\
+
+\noindent{\large \textbf{9}\hspace{.4cm}\textbf{Reed-Solomon (RS) Code}}
+
+\noindent Reed-Solomon (RS) Code  is considered as a maximum distance separable code \cite{wicker1994,solanki2004}. Various researchers have suggested to use this code as an efficient solution for packet loss protection \cite{solanki2004}. RS codes $c$ are denoted by their length $b$ and dimension $d$ as $(b, d$) codes. Each RS code word can be related to a system of $q$ linear equations in $d$ variables to get a unique solution is given as \vspace{-.5cm}
+\begin{eqnarray}
+  c &=& (c_0,c_1,...,c_{q-1}) \nonumber \\
+    &=& [E(0),E(\alpha),\cdots,E(\alpha^{q-1})],  \nonumber  
+    \label{eqc}\vspace{-2cm}
+\end{eqnarray}
+where
+\vspace{-1cm}
+\begin{eqnarray}
+   E(0) &=& m_0   \nonumber    \\
+   E(\alpha) &=& m_0 + m_1\alpha + \cdots + m_{d-1}\alpha^{d-1} \nonumber  \\  
+   &\vdots  \nonumber \\ 
+   E(\alpha^{q-1}) &=& m_0 + m_1\alpha^{q-1} + \cdots + m_{d-1}\alpha^{(d-1)(q-1)}.  \nonumber
+\end{eqnarray}
+Assuming that the exact locations of the errors are not known, it may be possible to construct all distinct systems of $d$ expressions from the set of expressions in $\{E(0),E(\alpha),\hdots,E(\alpha^{q-1})\}$. In $\binom{q}{d}$ such systems, $\binom{w+d-1}{d}$ of which will give incorrect information symbols. If the majority vote is taken among the solutions to all possible linear systems, the correct information bits will be received subject to the condition, $\binom{w+d-1}{k} < \binom{q-w}{d}$. A RS code of length $q$ and dimension $d$ can thus correct up to $w$ errors, where $w$ is as follows:
+\begin{equation}
+w = \left \lfloor  \frac{q - d + 1}{2} \right \rfloor. \nonumber
+\label{equ:RS}
+\end{equation}

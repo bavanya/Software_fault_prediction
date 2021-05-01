@@ -1,0 +1,44 @@
+\newpage
+\chapter*{List of Symbols}\markboth{LIST OF SYMBOLS}{}
+\begin{center}\centering
+\begin{longtable}{cp{2cm}l}
+\textbf{Symbol} & & \textbf{Description} \\
+$\Psi$ & &  Field of Interest (FoI)\\ 
+$\Omega$ & & Boundary region of a FoI \\
+$b$ & & Width of a region $\Omega$ \\
+$l$ & & Length of a region $\Omega$ \\
+$|xy|$ & & Euclidean distance between points $x$ and $y$ \\
+$\alpha(\overrightarrow{v_1},\overrightarrow{v_2})$ & & Angle between vectors $\overrightarrow{v_1}$ and $\overrightarrow{v_2}$ \\
+$\left \| R  \right \|$ & & Volume of the region $R$\\
+$E[x]$ & & Expected value of $x$\\
+$M_{x,y}$&& Minimum value between $x$ and $y$ \\
+$\eta$ & & Coverage ratio of a FoI\\ 
+$\gamma$ & & Connectivity probability of a WSN \\
+$\eta_k$ & & $k$-coverage ratio of a FoI, $k \geq 1$\\ 
+$\gamma_m$ & & $m$-connectivity probability of a WSN, $m \geq 1$ \\
+\multicolumn{3}{l}{\textbf{\textit{In homogeneous WSNs}}}\\
+$S$ & & Sensing range of a sensor  \\ 
+$C$ & & Communication range of a sensor  \\ 
+$p$ & & Liveness fraction of a sensor  \\ 
+$Cost$ & & Cost of a sensor\\
+$\phi$ & & Sensing region of a sensor \\ 
+$\zeta$ & & Communication region of a sensor \\ 
+$\Phi$ & & Effective sensing region of a sensor \\
+$\zeta$ & & Effective communication region of a sensor \\ 
+$\theta$ & & Cone-of-view angle of a sensor\\
+\multicolumn{3}{l}{ \textbf{In heterogeneous WSNs}}\\
+$s_i$ & & A type $i$ sensor \\
+${S_i}$ & & Sensing range of a type $i$ sensor in heterogeneous WSNs  \\ 
+${C_i}$ & & Communication range of a type $i$ sensor  \\ 
+${p_i}$ & & Liveness fraction of a type $i$ sensor  \\ 
+$Cost_i$ & & Cost of a type $i$ sensor\\
+$\phi_i$ & & Sensing region of a type $i$ sensor \\ 
+$\zeta_i$ & & Communication region of a type $i$ sensor \\ 
+$\Phi_i$ & & Effective sensing region of a type $i$ sensor \\
+$\zeta_i$ & & Effective communication region of a type $i$ sensor \\ 
+$\theta_i$ & & Cone-of-view angle of a type $i$ sensor\\
+\end{longtable}
+\end{center}
+
+
+ 
