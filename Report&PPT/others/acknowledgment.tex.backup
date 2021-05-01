@@ -1,0 +1,31 @@
+\chapter*{\centering Acknowledgments}
+\thispagestyle{empty}
+\quad I would like to express my sincere gratitude to my supervisors {\the \guide} for their valuable guidance, inspiration, and advice. 
+Their support and encouragement generously paved the way for my development as a research scientist. 
+I benefited greatly from many fruitful discussions with my supervisors, which has changed my personality, ability and nature in many ways. 
+I am highly grateful to my Doctoral Committee members, Prof. Diganta Goswami, Dr. Sonali Chouhan, and Dr. Saswata Shannigrahi. 
+Their comments and suggestions have truly deepened and widened my understanding of the problems I have worked on. 
+%I express my sincere thanks to Prof. S. B. Nair, Head of the Department of Computer Science and Engineering, for providing a nice research environment in the department, and support my research works in many ways.
+
+I am thankful to TATA Consultancy Services, India for awarding me the
+research fellowship that gave me extremely good opportunities to broaden
+my research activities and interact with eminent researchers in the world,
+both from the industry as well as from the academia. 
+% I am grateful to Dr. P. Balamuralidharan, Principal Research Scientist, TCS Innovation Lab,
+% Bangalore for providing valuable comments and suggestions on my research
+% outputs and giving a good exposure on the real world research challenges in
+% the field of digital forensic, through interactions at TCS Innovation Labs.
+
+I would also like to express my hearty gratitude to the Director, the Deans and
+other managements of IIT Guwahati whose collective efforts have made this
+institute a place for world-class studies and research. I am thankful to all the
+faculties and the staffs of the Department of Computer science and Engineering
+for extending their cooperation in terms of technical and official supports. 
+I am obliged to the research scholars, M. Tech and B. Tech students of this institute with whom I have closely worked.
+
+I am indebted to all my friends, only to name a few, Tanima Dutta, Shrishendu Das, Debanjan Sadhukhan, and Rohit Tripathi with whom I have enjoyed my student life.
+Last but not the least, I would like to express my gratitude to my parents for their constant support and encouragement. 
+Their motivation, assistance and guidance helped me to find my path for my future life. 
+\\ \vskip 2ex
+\noindent Place: IIT Guwahati\\
+Date: 		\hskip 	54ex					{\textbf{\the\name}}

@@ -1,0 +1,26 @@
+\raggedbottom
+\chapter*{\centering \underline{Declaration}}
+\thispagestyle{empty}
+I certify that
+\begin{enumerate}
+\item The work contained in this thesis is original and has been done by myself and the general supervision of my supervisors.
+\item The work has not been submitted to any other Institute for any degree
+or diploma.
+\item Whenever I have used materials (data, theoretical analysis, results) from
+other sources, I have given due credit to them by citing them in the text
+of the thesis and giving their details in the references.
+\item Whenever I have quoted written materials from other sources, I have put
+them under quotation marks and given due credit to the sources by citing
+them and giving required details in the references.
+\end{enumerate} \vskip 10ex
+
+
+\begin{table}\centering
+\begin{tabular}{p{6cm}p{12cm}}
+Place: IIT Guwahati &\textbf{\the\name}\\
+Date:  & Ph.D. Student\\
+&Department of Computer Science and Engineering,\\
+&Indian Institute of Technology Guwahati,\\
+&Guwahati, Assam, INDIA 781039.
+\end{tabular}
+\end{table}

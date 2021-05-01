@@ -1,0 +1,22 @@
+\newpage
+\chapter*{\centering Abstract}
+{
+A wireless sensor network (WSN) consists of several tiny battery-powered sensors that can communicate with each other to monitor a Field of Interest (FoI). 
+Coverage is acknowledged as an important metric to measure the quality of service of WSNs. It specifies how well a FoI is monitored by the WSN. Network connectivity is complementary to coverage and it indicates how well the sensory data can be communicated by the sensors to the sink. 
+This thesis studies coverage and connectivity problems in WSNs with stochastic deployment of sensors and demonstrates their applications. 
+
+The main challenge in deployment of sensors is to make sure that a minimum number of sensors are used to provide the desired level of coverage and connectivity in the FoI. 
+The first contribution of this thesis is to estimate the critical sensor density required for the desired coverage ratio under border effects in WSNs. 
+This work can be used to accurately determine the sensors required in any convex polygon-shaped FoI. 
+In some applications of WSNs, the sensors cannot be deployed directly inside the FoI to be monitored. 
+For example, in canal water monitoring project, existing coverage solutionscannot be used because, the sensors cannot be deployed on the water surface. 
+In the second contribution, we consider the sensors to be deployed uniformly at random outside the FoI near the boundary and estimate the minimum number of sensors required for desired level of coverage and connectivity. 
+We also illustrate an application of this work to develop a traffic information acquisition system. 
+The third contribution of this thesis is to consider a case when the sensors have only directional sensing capability and may have heterogeneity in terms of the sensing range, communication range, and/or probability of being alive. For such heterogeneous directional WSNs, we derive probabilistic expressions for $k$-coverage and $m$-connectivity that are used to optimize the cost of random deployment. 
+
+Minimising the energy consumed while ensuring the desired level of coverage of a FoI is an important factor to be considered to extend the lifetime of WSNs because the batteries may not be accessible for replacement. In the lest contribution, we derive an expression to determine the probability of a sensor, with a set of heterogeneous neighbours, being redundant for the desired coverage ratio of the FoI. We propose a distributed scheduling protocol to put the redundant sensors to sleep yet maintaining the $k$-coverage of the FoI in three-dimensional heterogeneous WSNs. 
+%In certain applications like intruder detection, it might be necessary to detect every intruder by at least $k$ ($k \geq 1$) sensors to improve the accuracy of detection.
+We extend the protocol for partial coverage in two-dimensional heterogeneous WSNs. The proposed protocol is fully distributed and does not use any geographical information but, gathers information only about the number of neighbours and their type with periodic control messages.
+}
+
+ 

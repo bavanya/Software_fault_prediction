@@ -1,0 +1,93 @@
+\documentclass[12pt]{csethesis}
+\usepackage[english]{babel}
+\usepackage{amsmath}        % Extra math definitions
+\usepackage{graphics}       % PostScript figures
+\usepackage{setspace}       % 1.5 spacing
+\usepackage{multicol}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{footnote}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{sidecap}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{sidecap}
+\usepackage{longtable}
+\usepackage{wrapfig}
+%\usepackage{hyperref}
+\newtheorem{lemma}{Lemma}[chapter]
+\makeatletter
+\@addtoreset{lemma}{chapter}
+\makeatother
+\newtheorem{theorem}{Theorem}[chapter]
+\makeatletter
+\@addtoreset{theorem}{chapter}
+\makeatother
+
+\usepackage[left=1.5in,right=1in,top=1in,bottom=1in]{geometry}
+%\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}
+\usepackage{emptypage}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+%\fancyfoot{}
+%\fancyfoot{\thepage}
+\fancyhead[RO,LE]{}
+\fancyhead[RE]{\ifnum\value{chapter}>0 \bfseries{\nouppercase{\rightorleftmark}} \else \bfseries{\leftmark} \fi}
+\fancyhead[LO]{\ifnum\value{chapter}>0 \bfseries{\nouppercase{\rightorleftmark}}  \else \bfseries{\leftmark} \fi}
+%\fancyhead[LO]{ \bfseries\slshape\nouppercase{\rightorleftmark}}
+\makeatletter
+\newcommand{\rightorleftmark}{%
+  \begingroup\protected@edef\x{\rightmark}%
+  \ifx\x\@empty
+    \endgroup\slshape\nouppercase{\leftmark}
+  \else
+    \endgroup\rightmark
+  \fi}
+\makeatother
+
+\newtheorem{example}{Example}
+\phdtitle = {[Title of the project]}
+\name = {[Name of the student]}
+\rollno = {[Roll Number]}
+\guide = {[Name of Supervisor]}
+
+\begin{document}
+\pagenumbering{roman}
+\include{others/title}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+%\onehalfspacing
+\doublespacing
+\include{others/dedication}
+
+\include{others/declaration}
+\include{others/certificate}
+\include{others/acknowledgment}
+\include{others/abstract}
+
+\pagestyle{fancy}
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+%\newpage
+\thispagestyle{empty}
+\mbox{}
+%\clearpage
+
+
+\include{chapters/ch0}
+\include{chapters/ch2}
+\include{chapters/ch3}
+\include{chapters/ch4}
+\include{chapters/ch5}
+\include{chapters/ch6}
+\bibliographystyle{IEEEtran}
+\bibliography{report}
+\end{document}
