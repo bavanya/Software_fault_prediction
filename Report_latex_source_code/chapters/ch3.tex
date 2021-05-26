@@ -41,8 +41,8 @@ of defects in all the modules, the proportion of actual defects in the top t pre
 
 \subsection{CLC(Cumulative lift chart (also the area under CLC))}
 
-\cite{clc}CLC uses percentages of modules as x-axis and percentages of defects as y-axis. The area under CLC is always used for comparison, and the area is simply denoted as CLC in this paper.Considering m modules f1 , f2 , ..., fm , listed in increasing order of predicted defect number, si as the actual defect number in the module fi, and s = s1 + s2 + ... + sm as the total number of defects in all the modules, the area under the curve should be computed as the sum of areas of trapezoid composed of two adjacent points and the axes in the CLC. Using CLC to denote
-the area under the curve in rest of the paper, it can be computed as follows:
+CLC uses percentages of modules as x-axis and percentages of defects as y-axis. The area under CLC is always used for comparison, and the area is simply denoted as CLC in this paper.Considering m modules f1 , f2 , ..., fm , listed in increasing order of predicted defect number, si as the actual defect number in the module fi, and s = s1 + s2 + ... + sm as the total number of defects in all the modules, the area under the curve should be computed as the sum of areas of trapezoid composed of two adjacent points and the axes in the CLC. Using CLC to denote
+the area under the curve in rest of the paper, it can be computed as follows:\cite{clc}
 \[CLC = \sum_{t=1}^{m}trapezoid_t\]
 \[=(\frac{1}{m})(\frac{1}{2})((0+\frac{s_m}{s}+...\]
 \[+(\frac{s_m+...+s_2}{s}+\frac{s_m+....+s_1}{s}))\]
