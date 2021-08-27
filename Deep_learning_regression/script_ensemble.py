@@ -8,11 +8,14 @@ import time
 from imblearn.over_sampling import SMOTE
 from imblearn.over_sampling import RandomOverSampler
 from tensorflow.keras.models import Sequential, load_model
+from keras.layers import Dense,Dropout,Conv2D,Conv1D,Flatten,MaxPool2D
 from keras.layers import LSTM, Dense, SimpleRNN
+from keras.layers import GRU, Dense
 import tensorflow as tf
 import csv
 from sklearn.decomposition import PCA
 from sklearn.decomposition import TruncatedSVD
+import statistics
 import glob
 
 
@@ -56,7 +59,11 @@ def model31(components):
 
 	return model
 
-def model24(components):
+def model24(components, cols_to_norm):
+	#Getting the rows and columns size in our data
+	img_rows, img_cols = 1,len(cols_to_norm)
+	input_shape = (img_rows, img_cols, 1)
+
 	#Building the model
 	model = Sequential()
 
@@ -119,6 +126,62 @@ def model(combined_data, cols_to_norm, train_data_index_list, test_data_index_li
 
 	return model.predict(test_x1)
 
+def sum_of_all_predictions_by_a_model(majority_voting_predictions):
+	# Getting the sum of all the predictions obtained to used while obtaining FPA
+	s = 0
+	for  t in range(majority_voting_predictions.shape[0]):
+		s+=majority_voting_predictions[t]
+	return s
+
+def FPA(majority_voting_predictions):
+	s = sum_of_all_predictions_by_a_model(majority_voting_predictions)
+	# Obtaining the value of FPA metric for the ensemble model
+	Fpa = 0
+	for  t in range(majority_voting_predictions.shape[0]):
+		x = 0
+		for j in range( majority_voting_predictions.shape[0]-t+1, majority_voting_predictions.shape[0]):
+			x = x + majority_voting_predictions[j]
+			
+		x = (x/s)/majority_voting_predictions.shape[0]
+		Fpa = Fpa + x
+
+	return Fpa	
+
+def CLC(majority_voting_predictions):
+	s = sum_of_all_predictions_by_a_model(majority_voting_predictions)
+	# Obtaining the value of CLC metric for the model
+	previous_obtained = majority_voting_predictions[majority_voting_predictions.shape[0] - 1]/s
+
+	CLC = 0
+	for i in range(majority_voting_predictions.shape[0]):
+		if(i==0):
+			CLC += 0 + previous_obtained
+		else:
+			additional = (majority_voting_predictions[majority_voting_predictions.shape[0] - 1 - i])/s
+			CLC += 2*previous_obtained + additional
+			previous_obtained += additional
+			
+	CLC/=(2*majority_voting_predictions.shape[0])
+	
+	return CLC
+
+def most_frequent_value(prediction_values):
+	max = 0
+	res = prediction_values[0]
+	for i in prediction_values:
+		freq = prediction_values.count(i)
+		if freq > max:
+			max = freq
+			res = i	
+	return res
+
+def majority_voting(predictions_list):
+	majority_voting_predictions = predictions_list[0]
+	for i in range(majority_voting_predictions.size):
+		prediction_values = [prediction_nd_array[i][0].item() for prediction_nd_array in predictions_list]
+		majority_voting_predictions[i] = most_frequent_value(prediction_values)
+	return majority_voting_predictions
+
 
 if __name__ == "__main__":
 	files = glob.glob("../../datasets/ant-*.csv", recursive = True)
@@ -145,15 +208,21 @@ if __name__ == "__main__":
 
 	model1 = model11(components1)
 	model2 = model31(components2)
-	model3 = model24(components1)
+	#model3 = model24(components1, cols_to_norm)
 	model4 = model11(components1)
 	model5 = model25(components1)
 
 	predictions_y1 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed1, model1))
 	predictions_y2 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components2, transformed2, model2))
-	predictions_y3 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed1, model3))
+	#predictions_y3 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed1, model3))
 	predictions_y4 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed3, model4))
 	predictions_y5 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed1, model5))
 
-	print("success!!")
+	# Obtain majority voting.
+	predictions_list = [predictions_y1, predictions_y2, predictions_y4, predictions_y5]
+	majority_voting_predictions = majority_voting(predictions_list)
 
+	print("FPA metric value obtained is: " + str(FPA(majority_voting_predictions)))
+	print("CLC metric value obtained is: " + str(CLC(majority_voting_predictions)))
+
+	print("success!!")
