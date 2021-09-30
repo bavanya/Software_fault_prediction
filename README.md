@@ -1,6 +1,6 @@
 # Software_fault_prediction
 
-Idea 1:
+## Idea 1:
 
 Treat the faulty data points i.e code files from which the OO metrics were extracted as anomalies.
 
@@ -9,14 +9,14 @@ Concepts tried using this approach:
 2. Autoencoder.
 3. Different clustering algorithms.
 
-Idea 2:
+## Idea 2:
 
 Apply deep learning treating it as a regression problem considering the OO metrics as the potential features.
 
 Used different models like LSTMs, RNNs, MLPs, CNNs, GRUs and tried different architectures.
 Tried their ensembles and ideas like averaging, majority voting etc for better results.
 
-Idea 3:
+## Idea 3:
 
 This idea was inspired by the paper- [An Improved CNN Model for Within-Project
 Software Defect Prediction by Cong Pan, Minyan Lu, Biao Xu and Houleng Gao](https://www.mdpi.com/2076-3417/9/10/2138)
