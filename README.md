@@ -15,6 +15,10 @@ Used different models like LSTMs, RNNs, MLPs, CNNs, GRUs and tried different arc
 Tried their ensembles and ideas like averaging, majority voting etc for better results.
 
 Idea 3:
+
+This idea was inspired by the paper- [An Improved CNN Model for Within-Project
+Software Defect Prediction by Cong Pan, Minyan Lu, Biao Xu and Houleng Gao](https://www.mdpi.com/2076-3417/9/10/2138)
+
 Since OO metrics do not capture the semantic information and syntax of the code, generate ASTs from the code files and extract important keywords and build regression models to predict the number of bugs in them.
 
 To generate input vectors for the models using the keywords, we can try keyword-index matching. 
