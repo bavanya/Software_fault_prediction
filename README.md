@@ -1,6 +1,7 @@
 # Software_fault_prediction
 
 Idea 1:
+
 Treat the faulty data points i.e code files from which the OO metrics were extracted as anomalies.
 
 Concepts tried using this approach:
@@ -9,6 +10,7 @@ Concepts tried using this approach:
 3. Different clustering algorithms.
 
 Idea 2:
+
 Apply deep learning treating it as a regression problem considering the OO metrics as the potential features.
 
 Used different models like LSTMs, RNNs, MLPs, CNNs, GRUs and tried different architectures.
