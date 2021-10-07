@@ -25,3 +25,5 @@ Since OO metrics do not capture the semantic information and syntax of the code,
 
 To generate input vectors for the models using the keywords, we can try keyword-index matching. 
 If we have pretrained models like bert specifically trained on language representation in JAVA codes, we could use them to obtain vectors which not only maintain the sequence of the keywords but also their semantic meanings.
+
+CNN and RNN based models can be used here considering the sequential nature of the inputs. Similar to how these models are chosen for text classification problems.
