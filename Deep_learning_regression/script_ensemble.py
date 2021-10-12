@@ -122,7 +122,7 @@ def model(combined_data, cols_to_norm, train_data_index_list, test_data_index_li
 	test_y1 = Y_test1.to_numpy()
 
 	# Fitting the model on training data.
-	history = model.fit(train_x1, train_y1, epochs = 100, batch_size = 128)
+	history = model.fit(train_x1, train_y1, epochs = 3, batch_size = 128)
 
 	return model.predict(test_x1)
 
@@ -182,9 +182,8 @@ def majority_voting(predictions_list):
 		majority_voting_predictions[i] = most_frequent_value(prediction_values)
 	return majority_voting_predictions
 
-
-if __name__ == "__main__":
-	files = glob.glob("../../datasets/ant-*.csv", recursive = True)
+def train(data_path, test_data_version):
+	files = glob.glob(data_path, recursive = True)
 	combined_data = pd.concat(map(pd.read_csv, files))
 
 	# Applying Min Max Scaling.
@@ -193,7 +192,7 @@ if __name__ == "__main__":
 	cols_to_norm = ['wmc', 'dit', 'noc', 'cbo', 'rfc', 'lcom', 'ca', 'ce', 'npm', 'lcom3', 'loc', 'dam', 'moa', 'mfa', 'cam', 'ic', 'cbm', 'amc', 'max_cc', 'avg_cc']
 	combined_data[cols_to_norm] = MinMaxScaler().fit_transform(combined_data[cols_to_norm])
 
-	test_length = len(combined_data[(combined_data['version']==1.7)])
+	test_length = len(combined_data[(combined_data['version']==test_data_version)])
 	test_data_index_list = list(range(test_length))
 
 	total_length = len(combined_data)
@@ -222,7 +221,21 @@ if __name__ == "__main__":
 	predictions_list = [predictions_y1, predictions_y2, predictions_y4, predictions_y5]
 	majority_voting_predictions = majority_voting(predictions_list)
 
+	print("Dataset path is: " + data_path)
+
 	print("FPA metric value obtained is: " + str(FPA(majority_voting_predictions)))
 	print("CLC metric value obtained is: " + str(CLC(majority_voting_predictions)))
 
 	print("success!!")
+
+if __name__ == "__main__":
+
+	datasets_info = [["../../datasets/ant-*.csv", 1.7], ["../../datasets/camel-*.csv", 1.6], ["../../datasets/forrest-*.csv", 0.8], ["../../datasets/ivy-*.csv", 2.0], ["../../datasets/jedit-*.csv", 4.3], ["../../datasets/log4j-*.csv", 1.2], ["../../datasets/lucene-*.csv", 2.4], ["../../datasets/poi-*.csv", 3.0], ["../../datasets/synapse-*.csv", 1.2]]
+
+	for i in range(len(datasets_info)):
+		train(datasets_info[i][0], datasets_info[i][1])
+
+	#issue train("../../datasets/prop-*.csv", 6)
+	#issue train("../../datasets/velocity-*.csv", 1.6)
+	#issue train("../../datasets/xalan-*.csv", 2.6)
+	#issue train("../../datasets/xerces-*.csv", 1.4)
