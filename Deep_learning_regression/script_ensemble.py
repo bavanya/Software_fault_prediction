@@ -122,7 +122,7 @@ def model(combined_data, cols_to_norm, train_data_index_list, test_data_index_li
 	test_y1 = Y_test1.to_numpy()
 
 	# Fitting the model on training data.
-	history = model.fit(train_x1, train_y1, epochs = 3, batch_size = 128)
+	history = model.fit(train_x1, train_y1, epochs = 100, batch_size = 128)
 
 	return model.predict(test_x1)
 
