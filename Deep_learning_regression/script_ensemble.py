@@ -183,6 +183,7 @@ def majority_voting(predictions_list):
 	return majority_voting_predictions
 
 def write_to_file(dataset_path, FPA, CLC, path_to_save):
+	# TODO: write all results to same file instead of creating new file for each dataset.
 	heading = ['dataset_path', 'FPA', 'CLC']
 	score = [dataset_path, FPA, CLC]
 
@@ -217,6 +218,7 @@ def train(data_path, test_data_version, dataset_name):
 
 	model1 = model11(components1)
 	model2 = model31(components2)
+	# TODO: Add the CNN model to the ensemble. i.e model124
 	#model3 = model24(components1, cols_to_norm)
 	model4 = model11(components1)
 	model5 = model25(components1)
