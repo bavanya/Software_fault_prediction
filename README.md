@@ -14,7 +14,14 @@ Concepts tried using this approach:
 Apply deep learning treating it as a regression problem considering the OO metrics as the potential features.
 
 Used different models like LSTMs, RNNs, MLPs, CNNs, GRUs and tried different architectures.
+Also tried classical machine learning models for regression like linear regression, lasso regression, poisson regression and compared the performance with deep learning models.
 Tried their ensembles and ideas like averaging, majority voting etc for better results.
+
+Generated results for two cases:
+1. Models trained on cummulative previous versions and tested on the latest version.
+2. Models trained on immediate previous version and tested on the next version.
+
+Adam optimizer, drop out, PCA, random oversampling, SMOTE, SVD are are the additional concepts used in the implementation of this idea. 
 
 ## Idea 3:
 
