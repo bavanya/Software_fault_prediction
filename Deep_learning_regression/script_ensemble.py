@@ -18,7 +18,6 @@ from sklearn.decomposition import TruncatedSVD
 import statistics
 import glob
 
-
 def transformPCA(combined_data, cols_to_norm, components):
 	pca = PCA(n_components=components)
 	# prepare transform on dataset
@@ -192,7 +191,6 @@ def write_to_file(dataset_path, FPA, CLC, path_to_save):
 		writer.writerow(heading)
 		writer.writerow(score)
 
-
 def train(data_path, test_data_version, dataset_name):
 	files = glob.glob(data_path, recursive = True)
 	combined_data = pd.concat(map(pd.read_csv, files))
@@ -250,7 +248,6 @@ def combine_all_csvs(csvs_path):
 	combined_data = pd.concat(map(pd.read_csv, files))
 	combined_data.to_csv('../../BTP_results/ensemble_results/total_results.csv')
 
-
 if __name__ == "__main__":
 
 	datasets_info = [["../../datasets/ant-*.csv", 1.7, 'ant'], ["../../datasets/camel-*.csv", 1.6, 'camel'], ["../../datasets/forrest-*.csv", 0.8, 'forrest'], ["../../datasets/ivy-*.csv", 2.0, 'ivy'], ["../../datasets/jedit-*.csv", 4.3, 'jedit'], ["../../datasets/log4j-*.csv", 1.2, 'log4j'], ["../../datasets/lucene-*.csv", 2.4, 'lucene'], ["../../datasets/poi-*.csv", 3.0, 'poi'], ["../../datasets/synapse-*.csv", 1.2, 'synapse']]
@@ -259,10 +256,8 @@ if __name__ == "__main__":
 
 	#issue ["../../datasets/jedit4.1-4.2/jedit-*.csv", 4.0, 'jedit4.1-4.2'], ["../../datasets/jedit4.2-4.3/jedit-*.csv", 4.0, 'jedit4.2-4.3']
 
-	'''
 	for i in range(len(datasets_info)):
 		train(datasets_info[i][0], datasets_info[i][1], datasets_info[i][2])
-	'''
 
 	for i in range(len(datasets_info_pair_wise)):
 		train(datasets_info_pair_wise[i][0], datasets_info_pair_wise[i][1], datasets_info_pair_wise[i][2])
