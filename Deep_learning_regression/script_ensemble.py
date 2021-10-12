@@ -191,6 +191,20 @@ def write_to_file(dataset_path, FPA, CLC, path_to_save):
 		writer.writerow(heading)
 		writer.writerow(score)
 
+def get_singleton_results_and_save(predictions, dataset_name, data_path, prediction_number):
+	FPA_result = str(FPA(predictions))
+	CLC_result = str(CLC(predictions))
+	path_to_save = '../../BTP_results/singleton_results/' + str(prediction_number) + '_' + dataset_name
+
+	write_to_file(str(prediction_number) + '_' + data_path, FPA_result, CLC_result, path_to_save)
+
+	print("Dataset path is: " + data_path)
+
+	print("FPA metric value obtained is: " + FPA_result)
+	print("CLC metric value obtained is: " + CLC_result)
+
+	print("success!!")
+
 def train(data_path, test_data_version, dataset_name):
 	files = glob.glob(data_path, recursive = True)
 	combined_data = pd.concat(map(pd.read_csv, files))
@@ -226,6 +240,11 @@ def train(data_path, test_data_version, dataset_name):
 	predictions_y4 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed3, model4))
 	predictions_y5 = np.rint(model(combined_data, cols_to_norm, train_data_index_list, test_data_index_list, components1, transformed1, model5))
 
+	get_singleton_results_and_save(predictions_y1, dataset_name, data_path, 1)
+	get_singleton_results_and_save(predictions_y2, dataset_name, data_path, 2)
+	get_singleton_results_and_save(predictions_y4, dataset_name, data_path, 4)
+	get_singleton_results_and_save(predictions_y5, dataset_name, data_path, 5)
+
 	# Obtain majority voting.
 	predictions_list = [predictions_y1, predictions_y2, predictions_y4, predictions_y5]
 	majority_voting_predictions = majority_voting(predictions_list)
@@ -243,18 +262,18 @@ def train(data_path, test_data_version, dataset_name):
 
 	print("success!!")
 
-def combine_all_csvs(csvs_path):
+def combine_all_csvs(csvs_path, output_path):
 	files = glob.glob(csvs_path, recursive = True)
 	combined_data = pd.concat(map(pd.read_csv, files))
-	combined_data.to_csv('../../BTP_results/ensemble_results/total_results.csv')
+	combined_data.to_csv(output_path)
 
 if __name__ == "__main__":
 
 	datasets_info = [["../../datasets/ant-*.csv", 1.7, 'ant'], ["../../datasets/camel-*.csv", 1.6, 'camel'], ["../../datasets/forrest-*.csv", 0.8, 'forrest'], ["../../datasets/ivy-*.csv", 2.0, 'ivy'], ["../../datasets/jedit-*.csv", 4.3, 'jedit'], ["../../datasets/log4j-*.csv", 1.2, 'log4j'], ["../../datasets/lucene-*.csv", 2.4, 'lucene'], ["../../datasets/poi-*.csv", 3.0, 'poi'], ["../../datasets/synapse-*.csv", 1.2, 'synapse']]
 
-	datasets_info_pair_wise = [["../../datasets/ant1.3-1.4/ant-*.csv", 1.4, 'ant1.3-1.4'], ["../../datasets/ant1.4-1.5/ant-*.csv", 1.5, 'ant1.4-1.5'], ["../../datasets/ant1.5-1.6/ant-*.csv", 1.6, 'ant1.5-1.6'], ["../../datasets/ant1.6-1.7/ant-*.csv", 1.7, 'ant1.6-1.7'], ["../../datasets/camel1.0-1.2/camel-*.csv", 1.2, 'camel1.0-1.2'], ["../../datasets/camel1.2-1.4/camel-*.csv", 1.4, 'camel1.2-1.4'], ["../../datasets/camel1.4-1.6/camel-*.csv", 1.6, 'camel1.4-1.6'], ["../../datasets/forrest0.6-0.7/forrest-*.csv", 0.7, 'forrest0.6-0.7'], ["../../datasets/forrest0.7-0.8/forrest-*.csv", 0.8, 'forrest0.7-0.8'], ["../../datasets/ivy1.1-1.4/ivy-*.csv", 1.4, 'ivy1.1-1.4'],	["../../datasets/ivy1.4-2.0/ivy-*.csv", 2.0, 'ivy1.4-2.0'], ["../../datasets/jedit3.2-4.0/jedit-*.csv", 4.0, 'jedit3.2-4.0'], ["../../datasets/jedit4.0-4.1/jedit-*.csv", 4.1, 'jedit4.0-4.1'], ["../../datasets/jedit4.2-4.3/jedit-*.csv", 4.0, 'jedit4.2-4.3'], ["../../datasets/log4j1.0-1.1/log4j-*.csv", 1.1, 'log4j1.0-1.1'], ["../../datasets/log4j1.1-1.2/log4j-*.csv", 1.2, 'log4j1.1-1.2'], ["../../datasets/lucene2.0-2.2/lucene-*.csv", 2.2, 'lucene2.0-2.2'], ["../../datasets/lucene2.2-2.4/lucene-*.csv", 2.4, 'lucene2.2-2.4'], ["../../datasets/poi1.5-2.0/poi-*.csv", 2.0, 'poi1.5-2.0'], ["../../datasets/poi2.0-2.5/poi-*.csv", 2.5, 'poi2.0-2.5'], ["../../datasets/poi2.5-3.0/poi-*.csv", 3.0, 'poi2.5-3.0'], ["../../datasets/synapse1.0-1.1/synapse-*.csv", 1.1, 'synapse1.0-1.1'], ["../../datasets/synapse1.1-1.2/synapse-*.csv", 1.2, 'synapse1.1-1.2']]
+	datasets_info_pair_wise = [["../../datasets/ant1.3-1.4/ant-*.csv", 1.4, 'ant1.3-1.4'], ["../../datasets/ant1.4-1.5/ant-*.csv", 1.5, 'ant1.4-1.5'], ["../../datasets/ant1.5-1.6/ant-*.csv", 1.6, 'ant1.5-1.6'], ["../../datasets/ant1.6-1.7/ant-*.csv", 1.7, 'ant1.6-1.7'], ["../../datasets/camel1.0-1.2/camel-*.csv", 1.2, 'camel1.0-1.2'], ["../../datasets/camel1.2-1.4/camel-*.csv", 1.4, 'camel1.2-1.4'], ["../../datasets/camel1.4-1.6/camel-*.csv", 1.6, 'camel1.4-1.6'], ["../../datasets/forrest0.6-0.7/forrest-*.csv", 0.7, 'forrest0.6-0.7'], ["../../datasets/forrest0.7-0.8/forrest-*.csv", 0.8, 'forrest0.7-0.8'], ["../../datasets/ivy1.1-1.4/ivy-*.csv", 1.4, 'ivy1.1-1.4'],	["../../datasets/ivy1.4-2.0/ivy-*.csv", 2.0, 'ivy1.4-2.0'], ["../../datasets/jedit3.2-4.0/jedit-*.csv", 4.0, 'jedit3.2-4.0'], ["../../datasets/jedit4.0-4.1/jedit-*.csv", 4.1, 'jedit4.0-4.1'], ["../../datasets/log4j1.0-1.1/log4j-*.csv", 1.1, 'log4j1.0-1.1'], ["../../datasets/log4j1.1-1.2/log4j-*.csv", 1.2, 'log4j1.1-1.2'], ["../../datasets/lucene2.0-2.2/lucene-*.csv", 2.2, 'lucene2.0-2.2'], ["../../datasets/lucene2.2-2.4/lucene-*.csv", 2.4, 'lucene2.2-2.4'], ["../../datasets/poi2.5-3.0/poi-*.csv", 3.0, 'poi2.5-3.0'], ["../../datasets/synapse1.0-1.1/synapse-*.csv", 1.1, 'synapse1.0-1.1'], ["../../datasets/synapse1.1-1.2/synapse-*.csv", 1.2, 'synapse1.1-1.2']]
 
-	#issue ["../../datasets/jedit4.1-4.2/jedit-*.csv", 4.0, 'jedit4.1-4.2'], ["../../datasets/jedit4.2-4.3/jedit-*.csv", 4.0, 'jedit4.2-4.3']
+	#issue ["../../datasets/jedit4.1-4.2/jedit-*.csv", 4.0, 'jedit4.1-4.2'], ["../../datasets/jedit4.2-4.3/jedit-*.csv", 4.0, 'jedit4.2-4.3'], ["../../datasets/poi1.5-2.0/poi-*.csv", 2.0, 'poi1.5-2.0'], ["../../datasets/poi2.0-2.5/poi-*.csv", 2.5, 'poi2.0-2.5']
 
 	for i in range(len(datasets_info)):
 		train(datasets_info[i][0], datasets_info[i][1], datasets_info[i][2])
@@ -262,8 +281,13 @@ if __name__ == "__main__":
 	for i in range(len(datasets_info_pair_wise)):
 		train(datasets_info_pair_wise[i][0], datasets_info_pair_wise[i][1], datasets_info_pair_wise[i][2])
 
+	csvs_path = '../../BTP_results/singleton_results/*.csv'
+	output_path = '../../BTP_results/singleton_results/total_results.csv'
+	combine_all_csvs(csvs_path, output_path)
+
 	csvs_path = '../../BTP_results/ensemble_results/*.csv'
-	combine_all_csvs(csvs_path)
+	output_path = '../../BTP_results/ensemble_results/total_results.csv'
+	combine_all_csvs(csvs_path, output_path)
 
 	#issue train("../../datasets/prop-*.csv", 6)
 	#issue train("../../datasets/velocity-*.csv", 1.6)
