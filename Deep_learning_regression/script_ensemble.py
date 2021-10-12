@@ -182,7 +182,17 @@ def majority_voting(predictions_list):
 		majority_voting_predictions[i] = most_frequent_value(prediction_values)
 	return majority_voting_predictions
 
-def train(data_path, test_data_version):
+def write_to_file(dataset_path, FPA, CLC, path_to_save):
+	heading = ['dataset_path', 'FPA', 'CLC']
+	score = [dataset_path, FPA, CLC]
+
+	# Writing the results to csv file.
+	with open(path_to_save + '_results.csv', 'w', newline='') as file:
+		writer = csv.writer(file)
+		writer.writerow(heading)
+		writer.writerow(score)
+
+def train(data_path, test_data_version, dataset_name):
 	files = glob.glob(data_path, recursive = True)
 	combined_data = pd.concat(map(pd.read_csv, files))
 
@@ -221,19 +231,25 @@ def train(data_path, test_data_version):
 	predictions_list = [predictions_y1, predictions_y2, predictions_y4, predictions_y5]
 	majority_voting_predictions = majority_voting(predictions_list)
 
+	FPA_result = str(FPA(majority_voting_predictions))
+	CLC_result = str(CLC(majority_voting_predictions))
+	path_to_save = '../../ensemble_results/' + dataset_name
+
+	write_to_file(data_path, FPA_result, CLC_result, path_to_save)
+
 	print("Dataset path is: " + data_path)
 
-	print("FPA metric value obtained is: " + str(FPA(majority_voting_predictions)))
-	print("CLC metric value obtained is: " + str(CLC(majority_voting_predictions)))
+	print("FPA metric value obtained is: " + FPA_result)
+	print("CLC metric value obtained is: " + CLC_result)
 
 	print("success!!")
 
 if __name__ == "__main__":
 
-	datasets_info = [["../../datasets/ant-*.csv", 1.7], ["../../datasets/camel-*.csv", 1.6], ["../../datasets/forrest-*.csv", 0.8], ["../../datasets/ivy-*.csv", 2.0], ["../../datasets/jedit-*.csv", 4.3], ["../../datasets/log4j-*.csv", 1.2], ["../../datasets/lucene-*.csv", 2.4], ["../../datasets/poi-*.csv", 3.0], ["../../datasets/synapse-*.csv", 1.2]]
+	datasets_info = [["../../datasets/ant-*.csv", 1.7, 'ant'], ["../../datasets/camel-*.csv", 1.6, 'camel'], ["../../datasets/forrest-*.csv", 0.8, 'forrest'], ["../../datasets/ivy-*.csv", 2.0, 'ivy'], ["../../datasets/jedit-*.csv", 4.3, 'jedit'], ["../../datasets/log4j-*.csv", 1.2, 'log4j'], ["../../datasets/lucene-*.csv", 2.4, 'lucene'], ["../../datasets/poi-*.csv", 3.0, 'poi'], ["../../datasets/synapse-*.csv", 1.2, 'synapse']]
 
 	for i in range(len(datasets_info)):
-		train(datasets_info[i][0], datasets_info[i][1])
+		train(datasets_info[i][0], datasets_info[i][1], datasets_info[i][2])
 
 	#issue train("../../datasets/prop-*.csv", 6)
 	#issue train("../../datasets/velocity-*.csv", 1.6)
