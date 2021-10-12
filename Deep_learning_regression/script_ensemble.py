@@ -17,6 +17,10 @@ from sklearn.decomposition import PCA
 from sklearn.decomposition import TruncatedSVD
 import statistics
 import glob
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import Lasso
+from sklearn.linear_model import PoissonRegressor
 
 def transformPCA(combined_data, cols_to_norm, components):
 	pca = PCA(n_components=components)
@@ -205,6 +209,93 @@ def get_singleton_results_and_save(predictions, dataset_name, data_path, predict
 
 	print("success!!")
 
+def linear_regression(transformed, train_data_index_list, test_data_index_list, combined_data, dataset_name, data_path):
+	X_train1 = transformed[transformed.index.isin(train_data_index_list)]
+	X_train1 = np.array(X_train1)
+
+	X_test1 = transformed[transformed.index.isin(test_data_index_list)]
+	X_test1 = np.array(X_test1)
+
+	Y_train1 = combined_data[transformed.index.isin(train_data_index_list)]
+	Y_train1 = Y_train1['bug']
+
+	Y_test1 = combined_data[transformed.index.isin(test_data_index_list)]
+	Y_test1 = Y_test1['bug']
+
+	reg = LinearRegression().fit(X_train1, Y_train1)
+	predictions = reg.predict(X_test1)
+
+	FPA_result = str(FPA(predictions))
+	CLC_result = str(CLC(predictions))
+
+	path_to_save = '../../BTP_results/ml_results/linear' + '_' + dataset_name
+
+	write_to_file('linear_' + data_path, FPA_result, CLC_result, path_to_save)
+
+	print("FPA metric value obtained is: " + FPA_result)
+	print("CLC metric value obtained is: " + CLC_result)
+	print("MSE is: " + str(mean_squared_error(Y_test1, predictions)))
+
+	print("success!!")
+
+def lasso_regression(transformed, train_data_index_list, test_data_index_list, combined_data, dataset_name, data_path):
+	X_train1 = transformed[transformed.index.isin(train_data_index_list)]
+	X_train1 = np.array(X_train1)
+
+	X_test1 = transformed[transformed.index.isin(test_data_index_list)]
+	X_test1 = np.array(X_test1)
+
+	Y_train1 = combined_data[transformed.index.isin(train_data_index_list)]
+	Y_train1 = Y_train1['bug']
+
+	Y_test1 = combined_data[transformed.index.isin(test_data_index_list)]
+	Y_test1 = Y_test1['bug']
+
+	reg = Lasso().fit(X_train1, Y_train1)
+	predictions = reg.predict(X_test1)
+
+	FPA_result = str(FPA(predictions))
+	CLC_result = str(CLC(predictions))
+
+	path_to_save = '../../BTP_results/ml_results/lasso' + '_' + dataset_name
+
+	write_to_file('lasso_' + data_path, FPA_result, CLC_result, path_to_save)
+
+	print("FPA metric value obtained is: " + FPA_result)
+	print("CLC metric value obtained is: " + CLC_result)
+	print("MSE is: " + str(mean_squared_error(Y_test1, predictions)))
+
+	print("success!!")
+
+def poisson_regression(transformed, train_data_index_list, test_data_index_list, combined_data, dataset_name, data_path):
+	X_train1 = transformed[transformed.index.isin(train_data_index_list)]
+	X_train1 = np.array(X_train1)
+
+	X_test1 = transformed[transformed.index.isin(test_data_index_list)]
+	X_test1 = np.array(X_test1)
+
+	Y_train1 = combined_data[transformed.index.isin(train_data_index_list)]
+	Y_train1 = Y_train1['bug']
+
+	Y_test1 = combined_data[transformed.index.isin(test_data_index_list)]
+	Y_test1 = Y_test1['bug']
+
+	reg = PoissonRegressor().fit(X_train1, Y_train1)
+	predictions = reg.predict(X_test1)
+
+	FPA_result = str(FPA(predictions))
+	CLC_result = str(CLC(predictions))
+
+	path_to_save = '../../BTP_results/ml_results/poisson' + '_' + dataset_name
+
+	write_to_file('poisson_' + data_path, FPA_result, CLC_result, path_to_save)
+
+	print("FPA metric value obtained is: " + FPA_result)
+	print("CLC metric value obtained is: " + CLC_result)
+	print("MSE is: " + str(mean_squared_error(Y_test1, predictions)))
+
+	print("success!!")
+
 def train(data_path, test_data_version, dataset_name):
 	files = glob.glob(data_path, recursive = True)
 	combined_data = pd.concat(map(pd.read_csv, files))
@@ -227,6 +318,10 @@ def train(data_path, test_data_version, dataset_name):
 	transformed1 = transformPCA(combined_data, cols_to_norm, components1)
 	transformed2 = transformPCA(combined_data, cols_to_norm, components2)
 	transformed3 = transformSVD(combined_data, cols_to_norm, components1)
+
+	linear_regression(transformed1, train_data_index_list, test_data_index_list, combined_data, dataset_name, data_path)
+	lasso_regression(transformed1, train_data_index_list, test_data_index_list, combined_data, dataset_name, data_path)
+	poisson_regression(transformed1, train_data_index_list, test_data_index_list, combined_data, dataset_name, data_path)
 
 	model1 = model11(components1)
 	model2 = model31(components2)
@@ -280,6 +375,10 @@ if __name__ == "__main__":
 
 	for i in range(len(datasets_info_pair_wise)):
 		train(datasets_info_pair_wise[i][0], datasets_info_pair_wise[i][1], datasets_info_pair_wise[i][2])
+
+	csvs_path = '../../BTP_results/ml_results/*.csv'
+	output_path = '../../BTP_results/ml_results/total_results.csv'
+	combine_all_csvs(csvs_path, output_path)
 
 	csvs_path = '../../BTP_results/singleton_results/*.csv'
 	output_path = '../../BTP_results/singleton_results/total_results.csv'
