@@ -1,3 +1,4 @@
-Majority voting ensemble is built in the script_ensemble.py file. 
+In the script_ensemble.py file:
+Entire implementation for the 2nd idea is present.
 
-Next step would be to experiment with stacked ensemble.
+Majority voting ensemble is built, Next step would be to experiment with stacked ensemble.
