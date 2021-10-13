@@ -37,3 +37,8 @@ CNN and RNN based models can be used here considering the sequential nature of t
 
 The fundamental and the most important step for this approach is obtaining code embeddings which can be used for software bug prediction.
 This is called code representation learning and we can follow the footsteps of BioBERT to generate a similar pretrained model for our usecase.
+
+Helpful resources:
+
+[
+Blog on representation learning](https://medium.com/@aganirbanghosh007/representation-learning-a-review-and-perspectives-ea923618d79c)
