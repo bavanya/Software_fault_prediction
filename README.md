@@ -34,3 +34,6 @@ To generate input vectors for the models using the keywords, we can try keyword-
 If we have pretrained models like bert specifically trained on language representation in JAVA codes, we could use them to obtain vectors which not only maintain the sequence of the keywords but also their semantic meanings.
 
 CNN and RNN based models can be used here considering the sequential nature of the inputs. Similar to how these models are chosen for text classification problems.
+
+The fundamental and the most important step for this approach is obtaining code embeddings which can be used for software bug prediction.
+This is called code representation learning and we can follow the footsteps of BioBERT to generate a similar pretrained model for our usecase.
