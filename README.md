@@ -42,7 +42,7 @@ This is called code representation learning and we can follow the footsteps of B
 
 To what extent will the the code representations of common words change for different languages? For eg. Will the representations for words like if, else, while etc in the vector spaces of different corpus(different languages) be close to each other?(Considering that the vector spaces have common origin)
 
-Helpful resources:
+**Helpful resources related to this idea:**
 
 [
 Blog on representation learning](https://medium.com/@aganirbanghosh007/representation-learning-a-review-and-perspectives-ea923618d79c)
