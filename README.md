@@ -38,6 +38,10 @@ CNN and RNN based models can be used here considering the sequential nature of t
 The fundamental and the most important step for this approach is obtaining code embeddings which can be used for software bug prediction.
 This is called code representation learning and we can follow the footsteps of BioBERT to generate a similar pretrained model for our usecase.
 
+**Intriguing point under this idea**
+
+To what extent will the the code representations of common words change for different languages? For eg. Will the representations for words like if, else, while etc in the vector spaces of different corpus(different languages) be close to each other?(Considering that the vector spaces have common origin)
+
 Helpful resources:
 
 [
