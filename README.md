@@ -38,6 +38,10 @@ CNN and RNN based models can be used here considering the sequential nature of t
 The fundamental and the most important step for this approach is obtaining code embeddings which can be used for software bug prediction.
 This is called code representation learning and we can follow the footsteps of BioBERT to generate a similar pretrained model for our usecase.
 
+**Two approaches of using the embeddings**
+1. Add an embedding layer to generate a higher dimensional matrix before the layers of CNN/RNN etc.
+2. Consider the embeddings as individual features and train a CNN/RNN model on the resultant high dimensional data. 
+
 **Intriguing point under this idea**
 
 To what extent will the the code representations of common words change for different languages? For eg. Will the representations for words like if, else, while etc in the vector spaces of different corpus(different languages) be close to each other?(Considering that the vector spaces have common origin)
@@ -46,3 +50,8 @@ To what extent will the the code representations of common words change for diff
 
 [
 Blog on representation learning](https://medium.com/@aganirbanghosh007/representation-learning-a-review-and-perspectives-ea923618d79c)
+
+**Question**: 
+1. Which idea do you think will give better results?
+2. Which approach in idea 3 will give better results?
+3. Will we face the curse of dimensionality in the second approach of idea 3?
