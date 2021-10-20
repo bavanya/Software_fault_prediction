@@ -51,7 +51,8 @@ To what extent will the the code representations of common words change for diff
 [
 Blog on representation learning](https://medium.com/@aganirbanghosh007/representation-learning-a-review-and-perspectives-ea923618d79c)
 
-**Question**: 
+
+## Few questions to think about:
 1. Which idea do you think will give better results?
 2. Which approach in idea 3 will give better results?
 3. Will we face the curse of dimensionality in the second approach of idea 3?
