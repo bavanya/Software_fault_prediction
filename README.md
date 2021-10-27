@@ -56,3 +56,47 @@ Blog on representation learning](https://medium.com/@aganirbanghosh007/represent
 1. Which idea do you think will give better results?
 2. Which approach in idea 3 will give better results?
 3. Will we face the curse of dimensionality in the second approach of idea 3?
+
+## Related papers:
+[1] Software engineering book tenth edition. Ian Sommerville.
+
+[2] Pan, Lei & Lu, Jingyan & Xu, Longfei & Gao,. (2019). An Improved CNN Model for Within-Project Software Defect Prediction. Applied Sciences. 9. 2138. 10.3390/app9102138. 
+
+[3] Shyam R. Chidamber, Chris F. Kemerer: A Metrics suite for Object Oriented design. M.I.T. Sloan School of Management E53-315. 1993.
+
+[4] Henderson-Sellers, B., Object-oriented metrics : measures of complexity, Prentice-Hall, pp.142-147, 1996.
+
+[5]  Martin, R.C.: Agile Software Development: Principles, Patterns, and Practices. Alant Apt Series. Prentice Hall, Upper Saddle River, NJ, USA (2002)
+
+[6] P. K. Goyal and G. Joshi, "QMOOD metric sets to assess quality of Java program," 2014 International Conference on Issues and Challenges in Intelligent Computing Techniques (ICICT), 2014, pp. 520-533, doi: 10.1109/ICICICT.2014.6781337.
+
+[7] Tang M.H., Kao M.H., Chen M.H.: “An Empirical study on object-oriented Metrics” Software Metrics Symposium, 1999. IEEE Computer, Proceedings. PP. 242-249(1999). 
+
+[8] M. Nevendra and P. Singh, "Software bug count prediction via AdaBoost.R-ET," 2019 IEEE 9th International Conference on Advanced Computing (IACC), 2019, pp. 7-12, doi: 10.1109/IACC48062.2019.8971588.
+
+[9] X. Yang and W. Wen, “Ridge and Lasso Regression Models for Cross-Version Defect Prediction,” IEEE Trans. Reliab., vol. 67, no. 3, pp. 885–896, 2018.
+
+[10] L. Yu, “Using Negative Binomial Regression Analysis to Predict Software Faultsௗ: A Study of Apache Ant,” I.J. Inf. Technol. Comput. Sci., vol. 4, no. 8, pp. 63–70, 2012.
+
+[11] Santosh Singh Rathore and Sandeep Kumar. 2016. A Decision Tree Regression based Approach for the Number of Software Faults Prediction. SIGSOFT Softw. Eng. Notes 41, 1 (January 2016), 1–6. DOI:https://doi.org/10.1145/2853073.2853083
+
+[12] Sushant Kumar Pandey, Anil Kumar Tripathi, BCV-Predictor: A bug count vector predictor of a successive version of the software system, Knowledge-Based Systems,
+Volume 197, 2020, 105924, ISSN 0950-7051, https://doi.org/10.1016/j.knosys.2020.105924.
+(https://www.sciencedirect.com/science/article/pii/S0950705120302604)
+
+[13] Dam, Hoa & Pham, Trang & Ng, Shien & Tran, Truyen & Grundy, John & Ghose, Aditya & Kim, Taeksu & Kim, Chul-Joo. (2018). A deep tree-based model for software defect prediction. 
+
+[14] H. K. Dam, T. Tran, T. Pham, S. W. Ng, J. Grundy and A. Ghose, "Automatic Feature Learning for Predicting Vulnerable Software Components," in IEEE Transactions on Software Engineering, vol. 47, no. 1, pp. 67-85, 1 Jan. 2021, doi: 10.1109/TSE.2018.2881961.
+
+[15] Akimova, Elena & Bersenev, Alexander & Deikov, Artem & Kobylkin, Konstantin & Konygin, Anton & Mezentsev, Ilya & Misilov, Vladimir. (2021). A Survey on Software Defect Prediction Using Deep Learning. Mathematics. 9. 1180. 10.3390/math9111180. 
+
+[16] White, M.; Vendome, C.; Linares-Vasquez, M.; Poshyvanyk, D. Toward Deep Learning Software Repositories. In Proceedings of the 2015 IEEE/ACM 12th Working Conference on Mining Software Repositories (MSR),
+Florence, Italy, 16–17 May 2015; pp. 334–345.
+
+[17] Fan, Guisheng & Diao, Xuyang & Yu, Huiqun & Yang, Kang & Chen, Liqiong. (2019). Software Defect Prediction via Attention-Based Recurrent Neural Network. Scientific Programming. 2019. 1-14. 10.1155/2019/6230953. 
+
+[18] Li, J.; He, P.; Zhu, J.; Lyu, M.R. Software Defect Prediction via Convolutional Neural Network. In Proceedings
+of the 2017 IEEE International Conference on Software Quality, Reliability and Security (QRS), Prague, Czech Republic, 25–29 July 2017; pp. 318–328.
+
+[19] J. Li, P. He, J. Zhu and M. R. Lyu, "Software Defect Prediction via Convolutional Neural Network," 2017 IEEE International Conference on Software Quality, Reliability and Security (QRS), 2017, pp. 318-328, doi: 10.1109/QRS.2017.42.
+
