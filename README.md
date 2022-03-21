@@ -1,5 +1,7 @@
 # Software_fault_prediction
 
+This work has been implemented over the course of 2 semesters. The findings, report and slides for the work done in the first semester is present in [Phase-1_Documentation](https://github.com/bavanya/Software_fault_prediction/tree/main/Phase-1_Documentation). Please refer to the [Final_Documentation](https://github.com/bavanya/Software_fault_prediction/tree/main/Final_documentation) folder for the conclusion of the work.
+
 ## Idea 1:
 
 Treat the faulty data points i.e code files from which the OO metrics were extracted as anomalies.
